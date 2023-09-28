@@ -1,0 +1,60 @@
+
+<html>
+<head>
+    <title>Calculadora de Bhaskara</title>
+    <script>
+        function calcularEquacaoQuadratica() {
+            let a = parseFloat(document.getElementById("valorA").value);
+            let b = parseFloat(document.getElementById("valorB").value);
+            let c = parseFloat(document.getElementById("valorC").value);
+
+            let delta = b * b - 4 * a * c;
+            let x1, x2;
+
+            if (delta > 0) {
+                x1 = (-b + Math.sqrt(delta)) / (2 * a);
+                x2 = (-b - Math.sqrt(delta)) / (2 * a);
+            } else if (delta === 0) {
+                x1 = x2 = -b / (2 * a);
+            } else {
+                x1 = x2 = "Não há raízes reais";
+            }
+
+            document.getElementById("resultado").innerHTML = "X' = " + x1 + "<br>X'' = " + x2;
+        }
+        function click_limpar() {
+            document.getElementById("valorA").value = "";
+            document.getElementById("valorB").value = "";
+            document.getElementById("valorC").value = "";
+            document.getElementById("resultado").innerHTML = "";
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="box">
+    <h1>Formulario--Para calcular bhaskara</h1>
+    <p>Informe três valores para calcular uma equação quadrática ou uma bhaskara</p>
+    <form>
+        <div class="valores">
+        <label for="valorA">Valor de A:</label>
+        <input type="number" id="valorA" required>
+        </div>
+        <div class="valores">
+        <label for="valorB">Valor de B:</label>
+        <input type="number" id="valorB" required>
+        </div>
+        <div class="valores">
+        <label for="valorC">Valor de C:</label>
+        <input type="number" id="valorC" required>
+        </div>
+        <br>
+        <div class="resultado" id="resultado"></div>
+        <div>
+        <input class="calcular" type="button" value="Calcular" onclick="calcularEquacaoQuadratica()">
+        <input class="limpar" type="button" value="Limpar" onclick="click_limpar();" id="submit" class="submitLimp">
+    </div>
+    </div>
+    </form>
+</body>
+</html>
